@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Background Color</title>
+    <style>
+        /* CSS to center the UI */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: sans-serif;
+            transition: background-color 0.2s ease;
+            /* Smooth transition */
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        input[type="color"] {
+            width: 100px;
+            height: 100px;
+            border: none;
+            cursor: pointer;
+            background: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Pick a Color</h1>
+        <p>Change the background instantly:</p>
+        <input type="color" id="bgColorPicker" value="#100001">
+        <h2 id="colorCode">#100001</h2>
+    </div>
+
+    <script>
+        // Select the elements
+        const colorPicker = document.getElementById('bgColorPicker');
+        const colorCodeDisplay = document.getElementById('colorCode');
+
+        // Function to update the background
+        function updateBackground() {
+            const chosenColor = colorPicker.value;
+
+            // Apply the color to the entire body
+            document.body.style.backgroundColor = chosenColor;
+
+            // Update the text display
+            colorCodeDisplay.textContent = chosenColor;
+        }
+
+        // Add event listener for 'input' (updates as you drag)
+        colorPicker.addEventListener('input', updateBackground);
+    </script>
+
+</body>
+
+</html>
